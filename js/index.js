@@ -61,15 +61,21 @@ Book.prototype.drawBook = function () {
     let pages = document.createElement('p');
     let readStatus = this.read ? 'Finished' : 'Still Reading'
     let button = document.createElement("button");
+    let deleteButton = document.createElement("button");
+    //read status button
     button.classList.add('read-button');
     if (this.read) button.classList.add('active');
     button.innerText = readStatus;
+    //delete button
+    deleteButton.classList.add('delete-button');
+    deleteButton.innerText = 'Delete';
+
     title.textContent = `Title: ${this.title}`;
     author.textContent = `Author: ${this.author}`;
     pages.textContent = `Number of Pages: ${this.pages}`;
     newBook.classList.add('book-card');
     newBook.id = `${myLibrary.length - 1}`;
-    newBook.append(title, author, pages, button);
+    newBook.append(title, author, pages, button, deleteButton);
     // add event listener to button
     button.addEventListener('click', (e) => {
         e.target.classList.toggle('active');
@@ -77,6 +83,13 @@ Book.prototype.drawBook = function () {
         let index = e.target.closest('div').id;
         myLibrary[index].read = !myLibrary[index].read;
     });
+
+    // add event listener to delete button
+    deleteButton.addEventListener('click', (e) => {
+        let index = e.target.closest('div').id;
+        myLibrary.splice(parseInt(index), 1);
+        drawLibrary();
+    })
     container.append(newBook);
 }
 

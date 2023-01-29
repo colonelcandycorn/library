@@ -102,6 +102,13 @@ body {
     font-family: 'Be Vietnam Pro', sans-serif;
 }
 
+
+.header {
+    display: flex;
+    justify-content: space-around;
+    background-color: var(--header-clr);
+    align-items: center;
+}
 h1 {
     text-align: center;
     background-color: var(--header-clr);
@@ -203,6 +210,11 @@ button {
 .read-button.active {
     background-color: var(--header-clr);
     color: var(--font-clr);
+}
+
+.delete-button {
+    background-color: var(--accent-clr);
+    border: none;
 }
 
 
